@@ -1,0 +1,497 @@
+﻿
+<div class="col-md-9 row" style="margin-top: 5px">
+    <div id="WrapLeftPE" #leftdiv>
+        <span><b>Left Shoulder Examination:</b></span><label style="visibility:hidden">#leftshouldertitle</label>
+
+        <section>
+            <input type="checkbox" id="chkshlrevelLeft" value="Reveals tenderness upon palpation of the " class="nocomma" onclick="checkMe(this)" checked="checked" /> reveals tenderness upon palpation of the
+
+
+            <input type="text" ID="txtPalpationText1Left" onchange="txtMe(this)" Style="margin-left: 0px;" />
+            <input type="checkbox" ID="chkACJointLeft" class="chkrevelL" onclick="checkMe(this);checkDefault(this, 'chkshlrevelLeft');" value="AC joint" checked="checked" /> AC joint
+            <input type="checkbox" ID="chkGlenohumeralLeft" class="chkrevelL" onclick="checkMe(this);checkDefault(this, 'chkshlrevelLeft');" value="glenohumeral region" checked="checked" /> glenohumeral region
+            <input type="checkbox" ID="chkCorticoidLeft" class="chkrevelL" onclick="checkMe(this);checkDefault(this, 'chkshlrevelLeft');" value="corticoid region" /> corticoid region
+            <input type="checkbox" ID="chkSupraspinatusLeft" class="chkrevelL" onclick="checkMe(this);checkDefault(this, 'chkshlrevelLeft');" value="supraspintus tendon" /> supraspinatus tendon
+            <input type="checkbox" ID="chkScapularLeft" class="chkrevelL" onclick="checkMe(this);checkDefault(this, 'chkshlrevelLeft');" value="scapular region" /> scapular region
+            <input type="checkbox" ID="chkDeepLabralLeft" class="chkrevelL" onclick="checkMe(this);checkDefault(this, 'chkshlrevelLeft');" value="deep labral region" /> deep labral region
+            <label>.</label>
+            <input type="checkbox" id="chkPEleft1" value="There is muscle spasm present at the " class="nocomma" onclick="checkMe(this)" checked="checked" /> There is muscle spasm present at the&nbsp;
+
+            <input type="checkbox" ID="chkDeltoidLeft" class="chkmuscleL" onclick="checkMe(this);checkDefault(this, 'chkPEleft1');" value="deltoid muscle" checked="checked" /> deltoid muscle
+            <input type="checkbox" ID="chkTrapeziusLeft" class="chkmuscleL" onclick="checkMe(this);checkDefault(this, 'chkPEleft1');" value="trapezius muscle" checked="checked" /> trapezius muscle
+            <!--<input type="checkbox" ID="chkecchymosisLeft" class="chkmuscleL" onclick="checkMe(this);checkDefault(this, 'chkPEleft1');" value="ecchymosis" /> ecchymosis
+            <input type="checkbox" ID="chkedemaLeft" class="chkmuscleL" onclick="checkMe(this);checkDefault(this, 'chkPEleft1');" value="edema" /> edema
+            <input type="checkbox" ID="chklimitationLeft" class="chkmuscleL" onclick="checkMe(this);checkDefault(this, 'chkPEleft1');" value="severe limitation in range of motion" /> severe limitation in range of motion-->
+            <span>.</span>
+
+            <br />
+        </section>
+
+
+        <section style="display:none">
+            <span class="control-label"><b>Tests: </b></span>
+            <input type="checkbox" ID="chkNeerLeft" onclick="checkMe(this)" value="Neer" /> Neer
+            <input type="checkbox" ID="chkHawkinLeft" onclick="checkMe(this)" value="Hawkins" />Hawkins
+            <input type="checkbox" ID="chkYergasonsLeft" onclick="checkMe(this)" value="Yergason" />Yergason
+
+            <span> test - positive.</span>
+        </section>
+
+        <section class="col-md-3">
+            <span class="control-label">Notes</span>
+        </section>
+        <section class="col-md-9" style="margin-top: 5px">
+            <textarea id="txtFreeFormL" Style="Width:700px;Height:100px" onchange="txtAreaMe(this)"></textarea>
+
+            <button type="button" id="start_button" onclick="startButton2(event)">
+                <img src="images/mic.gif" alt="start" />
+            </button>
+            <br />
+            <label style="visibility:hidden">#shoulderleftrom</label>
+            <section style="display: none"><span class="final" id="final_span"></span><span class="interim" id="interim_span"></span></section>
+        </section>
+
+        <label style="visibility:hidden">#shoulderleftmri</label>
+
+    </div>
+
+    <div id="WrapRightPE" #rigthtdiv>
+        <span><b>Right Shoulder Examination:</b> </span><label style="visibility:hidden">#rightshouldertitle</label>
+
+        <section>
+            <input type="checkbox" id="chkshlrevelRight" value="Reveals tenderness upon palpation of the " class="nocomma" onclick="checkMe(this)" checked="checked" /> reveals tenderness upon palpation of the
+
+            <input type="text" ID="txtPalpationText1Right" onchange="txtMe(this)" Style="margin-left: 0px;" />
+
+            <input type="checkbox" ID="chkACJointRight" class="chkrevelR" onclick="checkMe(this);checkDefault(this, 'chkshlrevelRight');" value="AC joint" checked="checked" /> AC joint
+            <input type="checkbox" ID="chkGlenohumeralRight" class="chkrevelR" onclick="checkMe(this);checkDefault(this, 'chkshlrevelRight');" value="glenohumeral region" checked="checked" /> glenohumeral region
+            <input type="checkbox" ID="chkCorticoidRight" class="chkrevelR" onclick="checkMe(this);checkDefault(this, 'chkshlrevelRight');" value="corticoid region" /> corticoid region
+            <input type="checkbox" ID="chkSupraspinatusRight" class="chkrevelR" onclick="checkMe(this);checkDefault(this, 'chkshlrevelRight');" value="supraspintus tendon" /> supraspintus tendon
+            <input type="checkbox" ID="chkScapularRight" class="chkrevelR" onclick="checkMe(this);checkDefault(this, 'chkshlrevelRight');" value="scapular region" /> scapular region
+            <input type="checkbox" ID="chkDeepLabralRight" class="chkrevelR" onclick="checkMe(this);checkDefault(this, 'chkshlrevelRight');" value="deep labral region" /> deep labral region
+            <label>.</label>
+            <input type="checkbox" id="chkPEright1" value="There is muscle spasm present at the " class="nocomma" onclick="checkMe(this)" checked="checked" /> There is muscle spasm present at the&nbsp;
+            <input type="checkbox" ID="chkDeltoidRight" class="chkmuscleR" onclick="checkMe(this);checkDefault(this, 'chkPEright1');" value="deltoid muscle" checked="checked" /> deltoid muscle
+            <input type="checkbox" ID="chkTrapeziusRight" class="chkmuscleR" onclick="checkMe(this);checkDefault(this, 'chkPEright1');" value="trapezius muscle" checked="checked" /> trapezius muscle
+            <!--<input type="checkbox" ID="chkecchymosisRight" class="chkmuscleR" onclick="checkMe(this);checkDefault(this, 'chkPEright1');" value="ecchymosis" /> ecchymosis
+            <input type="checkbox" ID="chkedemaRight" class="chkmuscleR" onclick="checkMe(this);checkDefault(this, 'chkPEright1');" value="edema" /> edema
+            <input type="checkbox" ID="chklimitationRight" class="chkmuscleR" onclick="checkMe(this);checkDefault(this, 'chkPEright1');" value="severe limitation in range of motion" /> severe limitation in range of motion-->
+            <span>.</span>
+
+
+
+            <br />
+        </section>
+        <section style="display:none">
+            <span class="control-label"><b>Tests: </b></span>
+            <input type="checkbox" ID="chkNeerLeft" onclick="checkMe(this)" value="Neer" /> Neer
+            <input type="checkbox" ID="chkHawkinLeft" onclick="checkMe(this)" value="Hawkins" />Hawkins
+            <input type="checkbox" ID="chkYergasonsLeft" onclick="checkMe(this)" value="Yergason" />Yergason
+
+            <span> test - positive.</span>
+        </section>
+
+        <section class="col-md-3">
+            <span class="control-label">Notes</span>
+        </section>
+        <section class="col-md-9" style="margin-top: 5px">
+            <textarea id="txtFreeFormR" Style="Width:700px;Height:100px" onchange="txtAreaMe(this)"></textarea>
+
+            <button type="button" id="start_button" onclick="startButton2(event)">
+                <img src="images/mic.gif" alt="start" />
+            </button>
+            <br />
+            <label style="visibility:hidden">#shoulderrightrom</label>
+            <section style="display: none"><span class="final" id="final_span"></span><span class="interim" id="interim_span"></span></section>
+        </section>
+        <label style="visibility:hidden">#shoulderrightmri</label>
+    </div>
+
+    <label style="visibility:hidden">#shouldertest</label>
+
+    <div id="TestPE">
+        <input type="checkbox" id="chkImpingement" value="Impingement test is " class="nocomma" onclick="checkMe(this)" />&nbsp;The Impingement test is&nbsp;
+        <section class="dropdown">
+            <input type="text" id="txtImpingement" onchange="txtMe(this);selectTestCHK('chkImpingement', this.value)" />
+            <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus(); selectVal('txtImpingement', this.value);selectTestCHK('chkImpingement', this.value)" id="ddlImp">
+                <option></option>
+
+                <option>positive on left.</option>
+                <option>positive on right.</option>
+                <option>positive bilaterally.</option>
+            </select>
+        </section>
+        <br />
+        <input type="checkbox" id="chkApley" value="Apley test is " class="nocomma" onclick="checkMe(this)" />&nbsp;The Apley test is&nbsp;
+
+        <section class="dropdown">
+            <input type="text" id="txtApley" onchange="txtMe(this);selectTestCHK('chkApley', this.value)" />
+            <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus(); selectVal('txtApley', this.value);selectTestCHK('chkApley', this.value)" id="ddlHawkins">
+                <option></option>
+
+                <option>positive on left.</option>
+                <option>positive on right.</option>
+                <option>positive bilaterally.</option>
+            </select>
+        </section>
+        <br />
+        <input type="checkbox" id="chkNeer" value="Neer test is " class="nocomma" onclick="checkMe(this)" />&nbsp;The Neer test is&nbsp;
+
+        <section class="dropdown">
+            <input type="text" id="txtNeer" onchange="txtMe(this);selectTestCHK('chkNeer', this.value)" />
+            <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus(); selectVal('txtNeer', this.value);selectTestCHK('chkNeer', this.value)" id="ddlNeer">
+                <option></option>
+
+                <option>positive on left.</option>
+                <option>positive on right.</option>
+                <option>positive bilaterally.</option>
+            </select>
+        </section>
+        <br />
+
+        <input type="checkbox" id="chkHawkins" value="Hawkins test is " class="nocomma" onclick="checkMe(this)" />&nbsp;The Hawkins test is&nbsp;
+
+        <section class="dropdown">
+            <input type="text" id="txtHawkins" onchange="txtMe(this);selectTestCHK('chkHawkins', this.value)" />
+            <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus(); selectVal('txtHawkins', this.value);selectTestCHK('chkHawkins', this.value)" id="ddlHawkins">
+                <option></option>
+
+                <option>positive on left.</option>
+                <option>positive on right.</option>
+                <option>positive bilaterally.</option>
+            </select>
+        </section>
+    </div>
+    <br />
+
+
+    <div class="col-md-3">
+        <span class="control-label"><b><u>Trigger Point:</u></b></span>
+    </div>
+    <div class="col-md-9" style="margin-top: 5px" id="div_TP">
+        <input id="hidTPText" type="hidden" />
+     
+        <span>On exam, patient has taut tender bands in the <input type="text" id="txtTP" class="noprint" style="width:400px" /> muscles.</span>
+         <table>
+        <tr>
+            <td>
+                <input type="checkbox" id="chktrapezius" value="trapezius" class="noprint" onclick="checkMe(this); writeTPtxt()" /> Trapezius
+                <!--<input type="text" ID="txtTrapezius" onchange="txtMe(this); selectTestCHK('chktrapezius', this.value);writeTPtxt()" class="txtTP" Style="margin-left: 10px;width:500px" value="" />-->
+
+
+                <section class="dropdown">
+                    <input type="text" id="txtTrapezius" class="noprint" onchange="txtMe(this); selectTestCHK('chktrapezius', this.value);writeTPtxt()" />
+                    <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus(); selectVal('txtTrapezius', this.value); selectTestCHK('chktrapezius', this.value); writeTPtxt();" id="ddldistraction"><option></option><option>left</option><option>right</option><option>bilaterally</option></select>
+                </section>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" id="chkdeltoid" value="deltoid" class="noprint" onclick="checkMe(this); writeTPtxt()" /> Deltoid
+                <!--<input type="text" ID="txtTrapezius" onchange="txtMe(this); selectTestCHK('chktrapezius', this.value);writeTPtxt()" class="txtTP" Style="margin-left: 10px;width:500px" value="" />-->
+
+
+                <section class="dropdown">
+                    <input type="text" id="txtdeltoid" class="noprint" onchange="txtMe(this); selectTestCHK('chkdeltoid', this.value);writeTPtxt()" />
+                    <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus(); selectVal('txtdeltoid', this.value); selectTestCHK('chkdeltoid', this.value); writeTPtxt();" id="ddldeltoid"><option></option><option>left</option><option>right</option><option>bilaterally</option></select>
+                </section>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" id="chkscalenes" value="scalene" class="noprint" onclick="checkMe(this);writeTPtxt()" /> Scalene
+                <!--<input type="text" ID="txtScalenes" onchange="txtMe(this);selectTestCHK('chkscalenes', this.value);writeTPtxt()" class="txtTP" Style="margin-left: 10px;width:500px" value="scalenes" />-->
+
+                <section class="dropdown">
+                    <input type="text" id="txtScalenes" class="noprint" onchange="txtMe(this); selectTestCHK('chkscalenes', this.value);writeTPtxt()" />
+                    <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus(); selectVal('txtScalenes', this.value); selectTestCHK('chkscalenes', this.value); writeTPtxt();" id="ddldistraction"><option></option><option>left</option><option>right</option><option>bilaterally</option></select>
+                </section>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" id="chkothers" value="scalenes" class="noprint" onclick="checkMe(this);writeTPtxt()" />
+                <input type="text" ID="txtOther" onchange="txtMe(this);selectTestCHK('chkothers', this.value);writeTPtxt()" class="noprint" Style="margin-left: 10px;width:500px" />
+            </td>
+        </tr>
+    </table>
+    </div>
+   
+
+    
+</div>
+
+
+
+
+
+<div id="divTP" style="display:none">
+    <div class="row">
+        <div class="col-md-3">
+            <span class="control-label"><b><u>Trigger Point:</u></b></span>
+        </div>
+        <div class="col-md-9" style="margin-top: 5px">
+
+
+            <span>There are palpable taut bands/trigger points at </span>
+
+        </div>
+        <table>
+            <tr>
+                <td>
+                    <select ID="ddlTPSide1" Style="height: 30px; width: 100px"></select>
+                    <input type="text" ID="txtTPText1" onchange="txtMe(this)" Style="margin-left: 10px;Width:557px" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select ID="ddlTPSide2" Style="height: 30px; width: 100px"></select>
+                    <input type="text" ID="txtTPText2" onchange="txtMe(this)" Style="margin-left: 10px;Width:557px" />
+                </td>
+            </tr>
+            <tr style="display:none">
+                <td>
+                    <select ID="ddlTPSide3" Style="height: 30px; width: 100px"></select>
+                    <input type="text" ID="txtTPText3" onchange="txtMe(this)" Style="margin-left: 10px;Width:557px" />
+                </td>
+            </tr>
+            <tr style="display:none">
+                <td>
+                    <select ID="ddlTPSide4" Style="height: 30px; width: 100px"></select>
+                    <input type="text" ID="txtTPText4" onchange="txtMe(this)" Style="margin-left: 10px;Width:557px" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select ID="ddlTPSide5" Style="height: 30px; width: 100px"></select>
+                    <input type="text" ID="txtTPText5" onchange="txtMe(this)" Style="margin-left: 10px;Width:557px" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select ID="ddlTPSide6" Style="height: 30px; width: 100px"></select>
+                    <input type="text" ID="txtTPText6" onchange="txtMe(this)" Style="margin-left: 10px;Width:557px" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select ID="ddlTPSide7" Style="height: 30px; width: 100px"></select>
+                    <input type="text" ID="txtTPText7" onchange="txtMe(this)" Style="margin-left: 10px;Width:557px" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select ID="ddlTPSide8" Style="height: 30px; width: 100px"></select>
+                    <input type="text" ID="txtTPText8" onchange="txtMe(this)" Style="margin-left: 10px;Width:557px" />
+                </td>
+            </tr>
+        </table>
+        <div class="col-md-9" style="margin-top: 5px">
+            <span> with referral to the scapula.</span>
+        </div>
+    </div>
+</div>
+
+<style>
+    .dropdown {
+        position: relative;
+        width: 200px;
+        display: inline-block;
+    }
+
+        .dropdown select {
+            width: 100%;
+        }
+
+        .dropdown > * {
+            box-sizing: border-box;
+            height: 2em;
+        }
+
+        .dropdown select {
+        }
+
+        .dropdown input {
+            position: absolute;
+            width: calc(100% - 20px);
+        }
+</style>
+
+
+
+<script type="text/javascript">
+
+    window.load = PopulateDropDownList();
+
+    function PopulateDropDownList() {
+
+
+        var ddl1 = document.getElementById("ddlTPSide1");
+        if (ddl1.options.length === 0) {
+            var ddl2 = document.getElementById("ddlTPSide2");
+            var ddl3 = document.getElementById("ddlTPSide3");
+            var ddl4 = document.getElementById("ddlTPSide4");
+            var ddl5 = document.getElementById("ddlTPSide5");
+            var ddl6 = document.getElementById("ddlTPSide6");
+            var ddl7 = document.getElementById("ddlTPSide7");
+            var ddl8 = document.getElementById("ddlTPSide8");
+
+            ddl1.options.length = 0;
+            ddl2.options.length = 0;
+            ddl3.options.length = 0;
+            ddl4.options.length = 0;
+            ddl5.options.length = 0;
+            ddl6.options.length = 0;
+            ddl7.options.length = 0;
+            ddl8.options.length = 0;
+
+
+            $.get('/xml/HSMData.xml', function (res) {
+
+                //var $xml = $(xmlDoc);
+                var TPSides = $(res).find("sTPSides");
+                var Rom = $(TPSides).find("TPSide");
+
+
+                for (var i = 0; i < Rom.length; i++) {
+                    var option1 = document.createElement("option");
+                    var option2 = document.createElement("option");
+                    var option3 = document.createElement("option");
+                    var option4 = document.createElement("option");
+                    var option5 = document.createElement("option");
+                    var option6 = document.createElement("option");
+                    var option7 = document.createElement("option");
+                    var option8 = document.createElement("option");
+
+
+
+                    //Set Customer Name in Text part.
+                    option1.text = Rom[i].getAttribute('name');
+                    option2.text = Rom[i].getAttribute('name');
+                    option3.text = Rom[i].getAttribute('name');
+                    option4.text = Rom[i].getAttribute('name');
+                    option5.text = Rom[i].getAttribute('name');
+                    option6.text = Rom[i].getAttribute('name');
+                    option7.text = Rom[i].getAttribute('name');
+                    option8.text = Rom[i].getAttribute('name');
+
+                    option1.value = Rom[i].getAttribute('name');
+                    option2.value = Rom[i].getAttribute('name');
+                    option3.value = Rom[i].getAttribute('name');
+                    option4.value = Rom[i].getAttribute('name');
+                    option5.value = Rom[i].getAttribute('name');
+                    option6.value = Rom[i].getAttribute('name');
+                    option7.value = Rom[i].getAttribute('name');
+                    option8.value = Rom[i].getAttribute('name');
+
+
+                    //Add the Option element to DropDownList.
+                    ddl1.options.add(option1);
+                    ddl2.options.add(option2);
+                    ddl3.options.add(option3);
+                    ddl4.options.add(option4);
+                    ddl5.options.add(option5);
+                    ddl6.options.add(option6);
+                    ddl7.options.add(option7);
+                    ddl8.options.add(option8);
+                }
+            });
+        }
+    }
+    function checkMe(chk) {
+
+        if ($(chk).prop("checked")) {
+            if ($(chk).attr("type") === "radio")
+                $("[name=" + $(chk).attr("name") + "]").removeAttr('checked');
+            $(chk).attr('checked', 'checked');
+        }
+        else {
+            $(chk).removeAttr('checked');
+        }
+    }
+
+
+
+    function selectTestCHK(chkid, val) {
+
+        if (val !== '')
+            $("#" + chkid).attr("checked", "checked");
+        else
+            $("#" + chkid).removeAttr("checked");
+    }
+
+    function writeTPtxt() {
+
+
+
+        var str = '';
+
+
+        if ($('#chktrapezius').prop("checked")) {
+            str = $('#txtTrapezius').val() + " " + $('#chktrapezius').val();
+        }
+
+        if ($('#chkdeltoid').prop("checked")) {
+            if (str !== '')
+                str += ", " + $('#txtdeltoid').val() + " " + $('#chkdeltoid').val();
+            else
+                str += $('#txtdeltoid').val() + " " + $('#chkdeltoid').val();
+        }
+
+        if ($('#chkscalenes').prop("checked")) {
+            if (str !== '')
+                str += ", " + $('#txtScalenes').val() + " " + $('#chkscalenes').val();
+            else
+                str += $('#txtScalenes').val() + " " + $('#chkscalenes').val();
+        }
+
+
+
+        if ($('#chkothers').prop("checked")) {
+            if (str !== '')
+                str += ", " + $('#txtOther').val() + " ";
+            else
+                str += $('#txtOther').val() + " ";
+        }
+
+        var strspan = "On exam, patient has taut tender bands in the #txtmsg muscles.";
+        strspan = strspan.replace('#txtmsg', str);
+
+
+
+
+        if (str !== '')
+            $('#hidTPText').val(strspan);
+        else
+            $('#hidTPText').val('');
+
+        $('#txtTP').attr('value', str);
+    }
+
+    function txtMe(txt) {
+        var val = $(txt).val();
+        $(txt).attr('value', val);
+    }
+
+    function selectVal(txtid, val) {
+
+        $("#" + txtid).attr('value', val);
+    }
+
+    function startButton2(event) {
+        controlname = "#txtFreeForm";
+        if (recognizing) {
+            recognition.stop();
+            return;
+        }
+        final_transcript = '';
+        recognition.lang = 'en';
+        recognition.start();
+        ignore_onend = false;
+        final_span1.innerHTML = '';
+        interim_span1.innerHTML = '';
+
+        start_timestamp = event.timeStamp;
+    }
+
+</script>

@@ -1,0 +1,214 @@
+
+
+<div class="form-horizontal">
+
+    <br />
+
+    <div class="table-responsive" style="Width:100%">
+
+        <strong class="labelcolor">Activities of daily living affected: </strong>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>ADL</td>
+                    <td>Perform</td>
+                    <td>Not Perform</td>
+                    <td>With difficulty</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="chkpersonalhygiene" onclick="checkMe(this)" value="personal hygiene, grooming, dressing, toileting" />personal hygiene, grooming, dressing, toileting
+                    </td>
+                    <td>
+                        <input type='radio' name="Perform1" id="rblPerform1" Value="Perform" onchange="checkMe(this)" />
+                    </td>
+                    <td>
+                        <input type='radio' name="Perform1" id="rblPerform11" Value="NotPerform" onchange="checkMe(this)" />
+                    </td>
+                    <td>
+                       
+                        <section class="dropdown" id="secWorkStatus">
+                            <input type="text" id="txtWithDifficulty1" value="" onchange="txtMe(this)" />
+                            <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus();selectVal('txtWithDifficulty1', this.value)" id="ddl_WithDifficulty1">
+
+                                <option value=""></option>
+                                <option value="with difficulty">with difficulty</option>
+                                <option value="with difficulty, takes 3x more than usual time.">with difficulty, takes 3x more than usual time.</option>
+                                <option value="difficulty falling asleep, awakens _____ at night.">difficulty falling asleep, awakens _____ at night.</option>
+
+                            </select>
+                        </section>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="chkwalking" onclick="checkMe(this)" value="walking, transferring, ambulating" />walking, transferring, ambulating
+                    </td>
+                    <td>
+                        <input type='radio' name="Perform2" id="rblPerform2" Value="Perform" onchange="checkMe(this)" />
+                    </td>
+                    <td>
+                        <input type='radio' name="Perform2" id="rblPerform22" Value="NotPerform" onchange="checkMe(this)" />
+                    </td>
+                    <td>
+                        <section class="dropdown" id="secWorkStatus2">
+                            <input type="text" id="txtWithDifficulty2" value="" onchange="txtMe(this)" />
+                            <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus();selectVal('txtWithDifficulty2', this.value)" id="ddl_WithDifficulty2">
+
+                                <option value=""></option>
+                                <option value="with difficulty">with difficulty</option>
+                                <option value="with difficulty, takes 3x more than usual time.">with difficulty, takes 3x more than usual time.</option>
+                                <option value="difficulty falling asleep, awakens _____ at night.">difficulty falling asleep, awakens _____ at night.</option>
+
+                            </select>
+                        </section>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input type="checkbox" id="chkeatingindependently" onclick="checkMe(this)" value="eating independently" />eating independently
+                    </td>
+                    <td>
+                        <input type='radio' name="Perform3" id="rblPerform3" Value="Perform" onchange="checkMe(this)" />
+                    </td>
+                    <td>
+                        <input type='radio' name="Perform3" id="rblPerform33" Value="NotPerform" onchange="checkMe(this)" />
+                    </td>
+                    <td>
+                        <section class="dropdown" id="secWorkStatus3">
+                            <input type="text" id="txtWithDifficulty3" value="" onchange="txtMe(this)" />
+                            <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus();selectVal('txtWithDifficulty3', this.value)" id="ddl_WithDifficulty3">
+
+                                <option value=""></option>
+                                <option value="with difficulty">with difficulty</option>
+                                <option value="with difficulty, takes 3x more than usual time.">with difficulty, takes 3x more than usual time.</option>
+                                <option value="difficulty falling asleep, awakens _____ at night.">difficulty falling asleep, awakens _____ at night.</option>
+
+                            </select>
+                        </section>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="chkcook" onclick="checkMe(this)" value="cook, clean, maintain households" />cook, clean, maintain households
+                    </td>
+                    <td>
+                        <input type='radio' name="Perform4" id="rblPerform4" Value="Perform" onchange="checkMe(this)" />
+                    </td>
+                    <td>
+                        <input type='radio' name="Perform4" id="rblPerform44" Value="NotPerform" onchange="checkMe(this)" />
+                    </td>
+                    <td>
+                        <section class="dropdown" id="secWorkStatus4">
+                            <input type="text" id="txtWithDifficulty4" value="" onchange="txtMe(this)" />
+                            <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus();selectVal('txtWithDifficulty4', this.value)" id="ddl_WithDifficulty4">
+
+                                <option value=""></option>
+                                <option value="with difficulty">with difficulty</option>
+                                <option value="with difficulty, takes 3x more than usual time.">with difficulty, takes 3x more than usual time.</option>
+                                <option value="difficulty falling asleep, awakens _____ at night.">difficulty falling asleep, awakens _____ at night.</option>
+
+                            </select>
+                        </section>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="chkshop" onclick="checkMe(this)" value="shop for food" />shop for food
+                    </td>
+                    <td>
+                        <input type='radio' name="Perform5" id="rblPerform5" Value="Perform" onchange="checkMe(this)" />
+                    </td>
+                    <td>
+                        <input type='radio' name="Perform5" id="rblPerform55" Value="NotPerform" onchange="checkMe(this)" />
+                    </td>
+                    <td>
+                        <section class="dropdown" id="secWorkStatus5">
+                            <input type="text" id="txtWithDifficulty5" value="" onchange="txtMe(this)" />
+                            <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus();selectVal('txtWithDifficulty5', this.value)" id="ddl_WithDifficulty5">
+
+                                <option value=""></option>
+                                <option value="with difficulty">with difficulty</option>
+                                <option value="with difficulty, takes 3x more than usual time.">with difficulty, takes 3x more than usual time.</option>
+                                <option value="difficulty falling asleep, awakens _____ at night.">difficulty falling asleep, awakens _____ at night.</option>
+
+                            </select>
+                        </section>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="chkSleeping" onclick="checkMe(this)" value="Sleeping" />Sleeping
+                    </td>
+                    <td>
+                        <input type='radio' name="Perform6" id="rblPerform6" Value="Perform" onchange="checkMe(this)" />
+                    </td>
+                    <td>
+                        <input type='radio' name="Perform6" id="rblPerform66" Value="NotPerform" onchange="checkMe(this)" />
+                    </td>
+                    <td>
+                        <section class="dropdown" id="secWorkStatus6">
+                            <input type="text" id="txtWithDifficulty6" value="" onchange="txtMe(this)" />
+                            <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus();selectVal('txtWithDifficulty6', this.value)" id="ddl_WithDifficulty6">
+
+                                <option value=""></option>
+                                <option value="with difficulty">with difficulty</option>
+                                <option value="with difficulty, takes 3x more than usual time.">with difficulty, takes 3x more than usual time.</option>
+                                <option value="difficulty falling asleep, awakens _____ at night.">difficulty falling asleep, awakens _____ at night.</option>
+
+                            </select>
+                        </section>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <strong class="labelcolor">Others:</strong>
+    <input type='text' ID="txtOtherRestrictions" TabIndex="33" onchange="txtMe(this)" style="Width:782px" />
+    <br />
+
+
+</div>
+
+
+<style>
+    .dropdown {
+        position: relative;
+        width: 200px;
+        display: inline-block;
+    }
+
+        .dropdown select {
+            width: 100%;
+        }
+
+        .dropdown > * {
+            box-sizing: border-box;
+            height: 2em;
+        }
+
+        .dropdown select {
+        }
+
+        .dropdown input {
+            position: absolute;
+            width: calc(100% - 20px);
+        }
+</style>
+
+<script>
+    function txtMe(txt) {
+        var val = $(txt).val();
+        $(txt).attr('value', val);
+    }
+
+    function selectVal(txtid, val) {
+        $("#" + txtid).attr('value', val);
+    }
+</script>

@@ -1,0 +1,282 @@
+<div class="row">
+    <label>
+        Reveals tenderness upon palpation at
+    </label>
+    <input id="txtspineexam" type="text" style="width:100px;text-align:left" value="C2-7" onchange="txtMe(this)" />
+    <label> levels </label>
+    <section class="dropdown">
+        <input type="text" id="txtWorse1" onchange="txtMe(this)" value="bilaterally" />
+        <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus();selectVal('txtWorse1', this.value)" id="ddlWorse1">
+            <option></option>
+            <option selected="selected"> bilaterally</option>
+            <option> on the left</option>
+            <option> on the right</option>
+        </select>
+    </section>
+    <label> with muscle spasms present. </label>
+
+    <table>
+        <tr>
+            <td>
+                <input type="checkbox" id="chkspur" value="The Spurling test is " class="nocomma" onclick="checkMe(this)" /> The Spurling test is
+
+                <section class="dropdown">
+                    <input type="text" id="txtSpurlings" onchange="txtMe(this);selectTestCHK('chkspur', this.value)" />
+                    <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus(); selectVal('txtSpurlings', this.value); selectTestCHK('chkspur', this.value)" id="ddlSpurlings"><option></option><option>positive on left.</option><option>positive on right.</option><option>positive bilaterally.</option></select>
+                </section>
+                <span>. </span>
+            </td>
+            <td>
+                <input type="checkbox" id="chkspur2" value="The cervical distraction test is " class="nocomma" onclick="checkMe(this)" />&nbsp;The cervical distraction test is&nbsp;
+
+                <section class="dropdown">
+                    <input type="text" id="txtdistraction" onchange="txtMe(this);selectTestCHK('chkspur2', this.value)" />
+                    <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus(); selectVal('txtdistraction', this.value);selectTestCHK('chkspur2', this.value)" id="ddldistraction"><option></option><option>positive on left.</option><option>positive on right.</option><option>positive bilaterally.</option></select>
+                </section>
+                <span>. </span>
+            </td>
+        </tr>
+    </table>
+</div>
+<label style="display:none">#romneck</label>
+
+<section id="divTP" class="row" >
+    <div class="col-md-3">
+        <span class="control-label"><b><u>Trigger Point:</u></b></span>
+    </div>
+    <div class="col-md-9" style="margin-top: 5px" id="div_TP">
+        <!--<span>There are palpable taut bands/trigger points with referral patterns as depicted below. </span>-->
+        <span>On exam, patient has taut tender bands in the <input type="text" id="txtTP" class="noprint" style="width:400px" /> muscles.</span>
+    </div>
+    <table>
+        <tr>
+            <td>
+                <input type="checkbox" id="chktrapezius" value="trapezius" class="noprint" onclick="checkMe(this); writeTPtxt()" /> Trapezius
+                <!--<input type="text" ID="txtTrapezius" onchange="txtMe(this); selectTestCHK('chktrapezius', this.value);writeTPtxt()" class="txtTP" Style="margin-left: 10px;width:500px" value="" />-->
+
+
+                <section class="dropdown">
+                    <input type="text" id="txtTrapezius" class="noprint" onchange="txtMe(this); selectTestCHK('chktrapezius', this.value);writeTPtxt()" />
+                    <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus(); selectVal('txtTrapezius', this.value); selectTestCHK('chktrapezius', this.value); writeTPtxt();" id="ddldistraction"><option></option><option>left</option><option>right</option><option>bilaterally</option></select>
+                </section>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" id="chkscalenes" value="scalene" class="noprint" onclick="checkMe(this);writeTPtxt()" /> Scalene
+                <!--<input type="text" ID="txtScalenes" onchange="txtMe(this);selectTestCHK('chkscalenes', this.value);writeTPtxt()" class="txtTP" Style="margin-left: 10px;width:500px" value="scalenes" />-->
+
+                <section class="dropdown">
+                    <input type="text" id="txtScalenes" class="noprint" onchange="txtMe(this); selectTestCHK('chkscalenes', this.value);writeTPtxt()" />
+                    <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus(); selectVal('txtScalenes', this.value); selectTestCHK('chkscalenes', this.value); writeTPtxt();" id="ddldistraction"><option></option><option>left</option><option>right</option><option>bilaterally</option></select>
+                </section>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" id="chkothers" value="scalenes" class="noprint" onclick="checkMe(this);writeTPtxt()" />
+                <input type="text" ID="txtOther" onchange="txtMe(this);selectTestCHK('chkothers', this.value);writeTPtxt()" class="noprint" Style="margin-left: 10px;width:500px" />
+            </td>
+        </tr>
+    </table>
+    <!--<table>
+        <tr>
+            <td>
+                <select ID="ddlTPSide1" Style="height: 30px; width: 100px">
+                    <option></option>
+                    <option>left</option>
+                    <option>right</option>
+                    <option>Bilateral</option>
+                </select>
+                <input type="text" ID="txtTPText1" onchange="txtMe(this)" class="txtTP" Style="margin-left: 10px;width:500px" Text="paraspinal level C5-C7, with referral patterns laterally to the region in a fan-like pattern" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <select ID="ddlTPSide2" Style="height: 30px; width: 100px">
+                    <option></option>
+                    <option>left</option>
+                    <option>right</option>
+                    <option>Bilateral</option>
+                </select>
+                <input type="text" ID="txtTPText2" onchange="txtMe(this)" class="txtTP" Style="margin-left: 10px;width:500px" Text="levator scapulae" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <select ID="ddlTPSide3" Style="height: 30px; width: 100px">
+                    <option></option>
+                    <option>left</option>
+                    <option>right</option>
+                    <option>Bilateral</option>
+                </select>
+                <input type="text" ID="txtTPText3" onchange="txtMe(this)" class="txtTP" Style="margin-left: 10px;width:500px" Text="trapezius" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <select ID="ddlTPSide4" Style="height: 30px; width: 100px">
+                    <option></option>
+                    <option>left</option>
+                    <option>right</option>
+                    <option>Bilateral</option>
+                </select>
+                <input type="text" ID="txtTPText4" onchange="txtMe(this)" class="txtTP" Style="margin-left: 10px;width:500px" Text="posterior scalenes" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <select ID="ddlTPSide5" Style="height: 30px; width: 100px">
+                    <option></option>
+                    <option>left</option>
+                    <option>right</option>
+                    <option>Bilateral</option>
+                </select>
+                <input type="text" ID="txtTPText5" onchange="txtMe(this)" class="txtTP" Style="margin-left: 10px;width:500px" Text="sternocleidomastoid" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <select ID="ddlTPSide6" Style="height: 30px; width: 100px">
+                    <option></option>
+                    <option>left</option>
+                    <option>right</option>
+                    <option>Bilateral</option>
+                </select>
+                <input type="text" ID="txtTPText6" onchange="txtMe(this)" class="txtTP" Style="margin-left: 10px;width:500px" Text="splenius cervicis" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <select ID="ddlTPSide7" Style="height: 30px; width: 100px">
+                    <option></option>
+                    <option>left</option>
+                    <option>right</option>
+                    <option>Bilateral</option>
+                </select>
+                <input type="text" ID="txtTPText7" onchange="txtMe(this)" class="txtTP" Style="margin-left: 10px;width:500px" Text="splenius capitis" />
+            </td>
+        </tr>
+    </table>-->
+
+</section>
+<label style="display:none">#necknotebp</label>
+<!--<section class="row">
+    <section class="col-md-3">
+        <span class="control-label">Notes</span>
+    </section>
+    <section class="col-md-9" style="margin-top: 5px">
+        <textarea id="txtFreeForm" Style="width:700px;height:100px" onchange="txtAreaMe(this)">
+               <button type="button" id="start_button2" onclick="startButton2(event)">
+            <img src="images/mic.gif" alt="start" />
+        </button>
+        <section style="display: none"><span class="final" id="final_span1"></span><span class="interim" id="interim_span1"></span></section>
+    </section>
+</section>-->
+
+
+<style>
+
+    .dropdown {
+        position: relative;
+        width: 200px;
+        display: inline-block;
+    }
+
+        .dropdown select {
+            width: 100%;
+        }
+
+        .dropdown > * {
+            box-sizing: border-box;
+            height: 2em;
+        }
+
+        .dropdown select {
+        }
+
+        .dropdown input {
+            position: absolute;
+            width: calc(100% - 20px);
+        }
+</style>
+<script type="text/javascript">
+
+
+
+    function txtMe(txt) {
+        var val = $(txt).val();
+        $(txt).attr('value', val);
+    }
+
+    function selectVal(txtid, val) {
+
+        $("#" + txtid).attr('value', val);
+    }
+
+    function selectTestCHK(chkid, val) {
+
+        if (val !== '')
+            $("#" + chkid).attr("checked", "checked");
+        else
+            $("#" + chkid).removeAttr("checked");
+    }
+
+    function writeTPtxt() {
+
+
+
+        var str = '';
+
+
+        if ($('#chktrapezius').prop("checked")) {
+            str = $('#txtTrapezius').val() + " " + $('#chktrapezius').val();
+        }
+
+        if ($('#chkscalenes').prop("checked")) {
+            if (str !== '')
+                str += ", " + $('#txtScalenes').val() + " " + $('#chkscalenes').val();
+            else
+                str += $('#txtScalenes').val() + " " + $('#chkscalenes').val();
+        }
+
+        if ($('#chkothers').prop("checked")) {
+            if (str !== '')
+                str += ", " + $('#txtOther').val() + " ";
+            else
+                str += $('#txtOther').val() + " ";
+        }
+
+        var strspan = "On exam, patient has taut tender bands in the #txtmsg muscles.";
+        strspan = strspan.replace('#txtmsg', str);
+
+
+
+        $('#ctl00_ContentPlaceHolder1_hdPETP').val(strspan);
+
+        $('#txtTP').attr('value', str);
+    }
+
+    function txtAreaMe(txt) {
+        debugger
+        var val = $(txt).val();
+        $(txt).text(val);
+    }
+
+    function startButton2(event) {
+        controlname = "#txtFreeForm";
+        if (recognizing) {
+            recognition.stop();
+            return;
+        }
+        final_transcript = '';
+        recognition.lang = 'en';
+        recognition.start();
+        ignore_onend = false;
+        final_span1.innerHTML = '';
+        interim_span1.innerHTML = '';
+
+        start_timestamp = event.timeStamp;
+    }
+
+</script>

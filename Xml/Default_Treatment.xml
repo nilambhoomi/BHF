@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TreatMents>
+  <TreatMent  isChecked="False" name="Recommend to continue PT/Chiro." />
+  <TreatMent  isChecked="False" name="Recommend to continue ______." />
+  <TreatMent  isChecked="False" name="Recommend to continue current medication." />
+  <TreatMent  isChecked="False" name="Follow-up with Orthopedics." />
+  <TreatMent  isChecked="False" name="Follow-up with __________" />
+  <TreatMent  isChecked="False" name="__________ prescribed." />
+  <TreatMent  isChecked="False" name="__________ prescribed, PMP ref# __________." />
+  <TreatMent  isChecked="False" name="Oral swab sent to lab." />
+  <TreatMent  isChecked="False" name="" />
+
+</TreatMents>

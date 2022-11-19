@@ -1,0 +1,78 @@
+<div class="form-horizontal">
+
+
+  
+    <strong class="labelcolor">Gait:</strong>
+    <p class="inline">
+        <section class="dropdown" style="width:300px">
+            <input type="text" id="txtgait" value="Normal" onchange="txtMe(this)" />
+            <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus();selectVal('txtgait', this.value)" id="ddlgait">
+
+                <option value=""></option>
+                <option value="Normal." selected="selected">Normal</option>
+                <option value="Guarded.">Guarded</option>
+                <option value="Antalgic.">Antalgic</option>
+            </select>
+        </section>
+        <section class="dropdown" style="width:300px">
+            <input type="text" id="txtgait2" value="" onchange="txtMe(this)" />
+            <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus();selectVal('txtgait2', this.value)" id="ddlgait2">
+
+                <option value=""></option>
+                <option value="Ambulates with a cane.">Ambulates with a cane.</option>
+                <option value="Ambulates with crutches.">Ambulates with crutches.</option>
+                <option value="Ambulates with wheelchair.">Ambulates with wheelchair.</option>
+                <option value="Unable to toe walk.">Unable to toe walk.</option>
+                <option value="Unable to heel walk.">Unable to heel walk.</option>
+            </select>
+        </section>
+    </p>
+
+
+
+
+</div>
+
+
+
+
+<style>
+    .dropdown {
+        position: relative;
+        width: 200px;
+        display: inline-block;
+    }
+
+        .dropdown select {
+            width: 100%;
+        }
+
+        .dropdown > * {
+            box-sizing: border-box;
+            height: 2em;
+        }
+
+        .dropdown select {
+        }
+
+        .dropdown input {
+            position: absolute;
+            width: calc(100% - 20px);
+        }
+</style>
+
+<script>
+    function txtMe(txt) {
+        var val = $(txt).val();
+        $(txt).attr('value', val);
+    }
+
+    function selectVal(txtid, val) {
+        $("#" + txtid).attr('value', val);
+    }
+
+    function txtAreaMe(txt) {
+        var val = $(txt).val();
+        $(txt).text(val);
+    }
+</script>

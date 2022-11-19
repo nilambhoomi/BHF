@@ -1,0 +1,218 @@
+﻿<div class="row col-md-9">
+    <span Style="float: left;"><b>Thoracic Spine Examination: </b></span>&nbsp;
+    <br />
+    <label> Reveals tenderness upon palpation at </label>
+    <input id="txtspineexam" type="text" style="width:100px;" value="T1-T12" onchange="txtMe(this)" />&nbsp;
+    <label>levels </label>
+    <section class="dropdown">
+        <input type="text" id="txtWorse1" onchange="txtMe(this)" value="bilaterally with muscle spasm present." />
+        <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus();selectVal('txtWorse1', this.value)" id="ddlWorse1">
+            <option></option>
+            <option selected="selected">bilaterally with muscle spasm present.</option>
+            <option>right with muscle spasm present.</option>
+            <option>left with muscle spasm present.</option>
+            <option>bilaterally with muscle spasm present, right greater than left.</option>
+            <option>bilaterally with muscle spasm present, left greater than right.</option>
+        </select>
+    </section>
+
+    <br />
+
+    <input type="checkbox" id="chkROMis" onclick="checkMe(this)" class="nocomma" value="ROM is " /> ROM is
+    &nbsp;&nbsp;
+    <section class="dropdown">
+        <input type="text" id="txtROMs" onchange="txtMe(this);selectTestCHK('chkROMis', this.value);" value="" />
+        <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus(); selectVal('txtROMs', this.value); selectTestCHK('chkROMis', this.value);" id="ddlROMs">
+            <option></option>
+            <option>mildly decreased. </option>
+            <option>moderately decreased. </option>
+            <option>severely decreased. </option>
+        </select>
+    </section>
+    <span>.</span>
+
+</div>
+
+<section class="row">
+    <section class="col-md-3">
+        <span class="control-label">Notes</span>
+    </section>
+    <section class="col-md-9" style="margin-top: 5px">
+        <textarea id="txtFreeForm" Style="width:700px;height:100px" onchange="txtAreaMe(this)"></textarea>
+        <button type="button" id="start_button2" onclick="startButton2(event)">
+            <img src="images/mic.gif" alt="start" />
+        </button>
+        <section style="display: none"><span class="final" id="final_span1"></span><span class="interim" id="interim_span1"></span></section>
+    </section>
+</section>
+
+
+<style>
+
+    .dropdown {
+        position: relative;
+        width: 200px;
+        display: inline-block;
+    }
+
+        .dropdown select {
+            width: 100%;
+        }
+
+        .dropdown > * {
+            box-sizing: border-box;
+            height: 2em;
+        }
+
+        .dropdown select {
+        }
+
+        .dropdown input {
+            position: absolute;
+            width: calc(100% - 20px);
+        }
+</style>
+<script type="text/javascript">
+
+
+
+    window.load = PopulateDropDownList();
+
+    function PopulateDropDownList() {
+
+
+        //var ddl1 = document.getElementById("ddlTPSide1");
+
+        //if (ddl1.options.length === 0) {
+
+        //    var ddl2 = document.getElementById("ddlTPSide2");
+        //    var ddl3 = document.getElementById("ddlTPSide3");
+        //    var ddl4 = document.getElementById("ddlTPSide4");
+
+        //    ddl1.options.length = 0;
+        //    ddl2.options.length = 0;
+        //    ddl3.options.length = 0;
+        //    ddl4.options.length = 0;
+
+        //    $.get('/xml/HSMData.xml', function (res) {
+
+        //        //var $xml = $(xmlDoc);
+
+        //        var TPSides = $(res).find("sTPSides");
+        //        var Rom = $(TPSides).find("TPSide");
+
+
+        //        for (var i = 0; i < Rom.length; i++) {
+        //            var option1 = document.createElement("option");
+        //            var option2 = document.createElement("option");
+        //            var option3 = document.createElement("option");
+        //            var option4 = document.createElement("option");
+
+
+
+        //            //Set Customer Name in Text part.
+        //            option1.text = Rom[i].getAttribute('name');
+        //            option2.text = Rom[i].getAttribute('name');
+        //            option3.text = Rom[i].getAttribute('name');
+        //            option4.text = Rom[i].getAttribute('name');
+
+        //            option1.value = Rom[i].getAttribute('name');
+        //            option2.value = Rom[i].getAttribute('name');
+        //            option3.value = Rom[i].getAttribute('name');
+        //            option4.value = Rom[i].getAttribute('name');
+
+        //            //Add the Option element to DropDownList.
+        //            ddl1.options.add(option1);
+        //            ddl2.options.add(option2);
+        //            ddl3.options.add(option3);
+        //            ddl4.options.add(option4);
+
+        //        }
+        //    });
+
+
+        //    var ddlLevels = document.getElementById("ddlLevels");
+        //    var ddlSpurlings = document.getElementById("ddlSpurlings");
+
+        //    ddlLevels.options.length = 0;
+        //    ddlSpurlings.options.length = 0;
+
+
+        //    $.get('/xml/HSMData.xml', function (res) {
+
+        //        //var $xml = $(xmlDoc);
+
+        //        // Find Person Tag
+        //        var Radiate = $(res).find("ROM");
+
+
+        //        for (var i = 0; i < Radiate.length; i++) {
+        //            var optionDistraction = document.createElement("option");
+        //            var optionSpurlings = document.createElement("option");
+
+        //            //Set Customer Name in Text part.
+        //            optionSpurlings.text = Radiate[i].getAttribute('name');
+        //            optionDistraction.text = Radiate[i].getAttribute('name');
+
+
+        //            //Add the Option element to DropDownList.
+
+        //            ddlSpurlings.options.add(optionSpurlings);
+
+
+        //        }
+
+        //        var Levels = $(res).find("Level");
+
+
+        //        for (i = 0; i < Levels.length; i++) {
+        //            var optionLevels = document.createElement("option");
+
+
+        //            //Set Customer Name in Text part.
+        //            optionLevels.text = Levels[i].getAttribute('name');
+
+
+
+        //            //Add the Option element to DropDownList.
+        //            ddlLevels.options.add(optionLevels);
+
+
+        //        }
+        //    });
+
+        //}
+
+    }
+
+    function txtMe(txt) {
+        var val = $(txt).val();
+        $(txt).attr('value', val);
+    }
+
+    function selectVal(txtid, val) {
+        $("#" + txtid).attr('value', val);
+    }
+
+    function txtAreaMe(txt) {
+        debugger
+        var val = $(txt).val();
+        $(txt).text(val);
+    }
+
+    function startButton2(event) {
+        controlname = "#txtFreeForm";
+        if (recognizing) {
+            recognition.stop();
+            return;
+        }
+        final_transcript = '';
+        recognition.lang = 'en';
+        recognition.start();
+        ignore_onend = false;
+        final_span1.innerHTML = '';
+        interim_span1.innerHTML = '';
+
+        start_timestamp = event.timeStamp;
+    }
+</script>

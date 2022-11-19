@@ -1,0 +1,424 @@
+﻿<div id="bodyui" style="margin-top: 15px">
+
+    <div class="col-md-12">
+
+        <b class="labelcolor"> Vital:</b>
+
+
+        <p>
+            <textarea Style="float: left;Width:650px" id="txt_vital" onchange="txtAreaMe(this)">H: __’__", W: __lbs, SpO2: __, HR: __, BSA: ____ sqm.
+
+</textarea>
+
+
+        </p>
+
+
+
+
+        <div class="clearfix"></div>
+        <div style="display:block">
+
+            <br />
+
+            <b class="labelcolor">
+                Accident Description
+            </b>
+            <p>
+
+                <section class="dropdown" style="width:600px">
+                    <input type="text" id="txt_accident_desc" onchange="txtMe(this)" />
+                    <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus();selectVal('txt_accident_desc', this.value)" id="ddl_accident_desc">
+                        <option value=""></option>
+
+                        <option value="presents with complaints of pain in the">presents with complaints of pain in the</option>
+                        <option value="presents for the evaluation of the injuries sustained in a motor vehicle accident">presents for the evaluation of the injuries sustained in a motor vehicle accident</option>
+                        <option value="presents for the evaluation of the injuries sustained as a pedestrian struck">presents for the evaluation of the injuries sustained as a pedestrian struck</option>
+                        <option value="presents for the evaluation of the injuries sustained as a cyclist struck">presents for the evaluation of the injuries sustained as a cyclist struck</option>
+                        <option value="presents for the evaluation of the injuries sustained in a Work Related Incident">presents for the evaluation of the injuries sustained in a Work Related Incident</option>
+                        <option value="presents for the evaluation of the injuries sustained in a slip and fall">presents for the evaluation of the injuries sustained in a slip and fall</option>
+                    </select>
+                </section>
+
+
+            </p>
+
+
+
+
+            <p class="inline">
+                Belt Restrained
+                <section class="dropdown">
+                    <input type="text" id="txt_belt" onchange="txtMe(this)" />
+                    <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus();selectVal('txt_belt', this.value)" id="ddl_belt">
+                        <option value="" />
+                        <option value="restrained driver">restrained driver</option>
+                        <option value="front seat passenger">front seat passenger</option>
+                        <option value="right rear passenger">right rear passenger</option>
+                        <option value="left rear passenger">left rear passenger</option>
+                    </select>
+                </section>
+
+                &nbsp;
+                Vehicle was involved in
+                <section class="dropdown">
+                    <input type="text" id="txt_invovledin" onchange="txtMe(this)" />
+                    <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus();selectVal('txt_invovledin', this.value)" id="ddl_invovledin">
+                        <option value=""></option>
+                        <option value="rear end">rear end</option>
+                        <option value="head on">head on</option>
+                        <option value="driver's side front">driver's side front</option>
+                        <option value="driver's side rear">driver's side rear</option>
+                        <option value="passenger side front">passenger side front</option>
+                        <option value="passenger side rear">passenger side rear</option>
+                        <option value="T-boned">T-boned</option>
+                        <option value="driver's side T-bone">driver's side T-bone</option>
+                        <option value="passenger side T-bone">passenger side T-bone</option>
+                    </select>
+                </section>
+
+                collision.&nbsp;
+                <input type='text' id="txtInvolvedOther" onchange="txtMe(this)" CssClass="inline" Style="display: none" />
+            </p>
+            <br />
+            <b class="labelcolor">Accident/Injury Details</b>
+            <p>
+                <textarea Style="float: left;Width:650px" id="txt_accident_desc_1" onchange="txtAreaMe(this)"></textarea>
+
+
+            </p>
+            <div class="clearfix"></div>
+            <br />
+            <p style="display: inline; margin-top: 10px">
+                <b class="labelcolor">EMS :</b> &nbsp;
+                <section class="dropdown">
+                    <input type="text" id="txt_EMS" onchange="txtMe(this)" />
+                    <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus();selectVal('txt_EMS', this.value)" id="ddl_EMS">
+                        <option value=""></option>
+                        <option value="arrived">arrived</option>
+                        <option value="did not arrive at the scene" selected="selected">did not arrive at the scene</option>
+
+                    </select>
+                </section>
+                <section class="dropdown">
+                    <input type="text" id="txt_airbage" onchange="txtMe(this)" />
+                    <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus();selectVal('txt_airbage', this.value)" id="ddl_airbage">
+                        <option value=""></option>
+
+                        <option value="Airbags were not deployed and police were not notified">Airbags were not deployed and police were not notified.</option>
+                        <option value="Airbags were deployed and police were not notified">Airbags were deployed and police were not notified.</option>
+                        <option value="Airbags were deployed but police were not notified">Airbags were deployed but police were not notified.</option>
+                        <option value="Airbags were deployed and police were notified">Airbags were deployed and police were notified.</option>
+                    </select>
+                </section>
+
+                Hospitalized
+
+
+                <input type="radio" id="rdbhospno" name="hos" Value="no" checked="checked" onclick="checkMe(this)" />No
+                <input type="radio" id="rdbhospyes" name="hos" Value="yes" onclick="checkMe(this)" />Yes
+
+                &nbsp;Which hospital&nbsp;
+                <input type='text' id="txt_hospital" CssClass="inline" disabled="disabled" onchange="txtMe(this)">
+
+                Went to the hospital
+                <input type="radio" id="rdbwhospno" name="wanttohosp" Value="no" checked="checked" onclick="checkMe(this)" />same day
+                <input type="radio" id="rdbwhospyes" name="wanttohosp" Value="yes" onclick="checkMe(this)" />
+
+                <input type="text" id="txt_day" value="0" style="background: none; border-bottom: 1px solid; width: 20px" disabled="disabled" onchange="txtMe(this)" />
+                day(s) later 
+                <section class="dropdown">
+                    <input type="text" id="txt_via" onchange="txtMe(this)" value="via ambulance." />
+                    <select onchange="this.previousElementSibling.value = this.value; this.previousElementSibling.focus();selectVal('txt_via', this.value)" id="ddl_via">
+                        <option value=""></option>
+                        <option value="via ambulance" selected="selected">via ambulance</option>
+                        <option value="with friend/family">with friend/family</option>
+                        <option value="by himself/herself">by himself/herself</option>
+                    </select>
+                </section>
+                At the hospital the following were done
+
+                <input type="text" id="txtmrictxray" onchange="txtMe(this)" style="width:400px" disabled="disabled" />
+
+                <!--<input type='checkbox' id="chk_mri" onclick="checkMe(this)" value=" MRI" />
+                MRI
+                <input type="text" id="txt_mri" onchange="txtMe(this)" disabled="disabled" />.
+                <input type='checkbox' id="chk_CT" onclick="checkMe(this)" value=" CT" />
+                CT
+                <input type="text" id="txt_CT" onchange="txtMe(this)" disabled="disabled" />.
+                <input type='checkbox' id="chk_xray" onclick="checkMe(this)" value=" X-rays" />
+                X-rays
+                <input type="text" id="txt_x_ray" onchange="txtMe(this)" disabled="disabled" />-->.
+                At the hospital prescription was given for
+                <input type="text" id="txt_prescription" onchange="txtMe(this)" disabled="disabled" />.
+
+            </p>
+
+            <div class="clearfix"></div>
+
+
+        </div>
+
+    </div>
+</div>
+<style>
+    .dropdown {
+        position: relative;
+        width: 200px;
+        display: inline-block;
+    }
+
+        .dropdown select {
+            width: 100%;
+        }
+
+        .dropdown > * {
+            box-sizing: border-box;
+            height: 2em;
+        }
+
+        .dropdown select {
+        }
+
+        .dropdown input {
+            position: absolute;
+            width: calc(100% - 20px);
+        }
+</style>
+<script type="text/javascript">
+
+    window.load = PopulateDropDownList();
+
+    function PopulateDropDownList() {
+
+
+        // var ddl_accident_desc = document.getElementById("ddl_accident_desc");
+        // var ddl_belt = document.getElementById("ddl_belt");
+        // var ddl_invovledin = document.getElementById("ddl_invovledin");
+        // var ddl_EMS = document.getElementById("ddl_EMS");
+        //var ddl_via = document.getElementById("ddl_via");
+        //var ddl_work_status = document.getElementById("ddl_work_status");
+        // var cboReturnedToWork = document.getElementById("cboReturnedToWork");
+        //var ddl_howlong = document.getElementById("ddl_howlong");
+
+        //   ddl_accident_desc.options.length = 0;
+        //ddl_belt.options.length = 0;
+        // ddl_invovledin.options.length = 0;
+        //ddl_EMS.options.length = 0;
+        //  ddl_via.options.length = 0;
+        //ddl_work_status.options.length = 0;
+        //cboReturnedToWork.options.length = 0;
+        //ddl_howlong.options.length = 0;
+
+
+
+        $.get('/xml/HSMData.xml', function (res) {
+
+            //var $xml = $(xmlDoc);
+            debugger;
+            // Find Person Tag
+            var Rom = $(res).find("HSM");
+
+            //var Sustaineds = Rom.find("Sustaineds");
+
+            //var Sustained = Sustaineds.find("Sustained");
+
+
+            //for (var i = 0; i < Sustained.length; i++) {
+            //    var option = document.createElement("option");
+
+            //    option.text = Sustained[i].getAttribute('name');
+
+            //    ddl_accident_desc.options.add(option);
+
+            //}
+
+            //var WasAts = Rom.find("WasAts");
+
+            //var WasAt = WasAts.find("WasAt");
+
+
+            //for (i = 0; i < WasAt.length; i++) {
+            //    option = document.createElement("option");
+
+            //    option.text = WasAt[i].getAttribute('name');
+
+            //    ddl_belt.options.add(option);
+
+            //}
+
+            //var InvolvedIns = Rom.find("InvolvedIns");
+
+            //var InvolvedIn = InvolvedIns.find("InvolvedIn");
+
+
+            //for (i = 0; i < InvolvedIn.length; i++) {
+            //    option = document.createElement("option");
+
+            //    option.text = InvolvedIn[i].getAttribute('name');
+
+            //    ddl_invovledin.options.add(option);
+
+            //}
+
+            //var ESMTeams = Rom.find("ESMTeams");
+
+            //var ESMTeam = ESMTeams.find("ESMTeam");
+
+
+            //for (i = 0; i < ESMTeam.length; i++) {
+            //    option = document.createElement("option");
+
+            //    option.text = ESMTeam[i].getAttribute('name');
+
+            //    ddl_EMS.options.add(option);
+
+            //}
+
+            //  var Vias = Rom.find("Vias");
+
+            //  var Via = Vias.find("Via");
+
+
+            //  for (i = 0; i < Via.length; i++) {
+            //      option = document.createElement("option");
+
+            //      option.text = Via[i].getAttribute('name');
+
+            //      ddl_via.options.add(option);
+
+            //  }
+
+            //var WorksAts = Rom.find("WorksAts");
+
+            //var WorksAt = WorksAts.find("WorksAt");
+
+
+            //for (i = 0; i < WorksAt.length; i++) {
+            //    option = document.createElement("option");
+
+            //    option.text = WorksAt[i].getAttribute('name');
+
+            //    ddl_work_status.options.add(option);
+
+            //}
+
+            //var WorkStatuss = Rom.find("WorkStatuss");
+
+            //var WorkStatus = WorkStatuss.find("WorkStatus");
+
+
+            //for (i = 0; i < WorkStatus.length; i++) {
+            //    option = document.createElement("option");
+
+            //    option.text = WorkStatus[i].getAttribute('name');
+
+            //    cboReturnedToWork.options.add(option);
+
+            //}
+
+            //var Times = Rom.find("Times");
+
+            //var Time = Times.find("Time");
+
+
+            //for (i = 0; i < Time.length; i++) {
+            //    option = document.createElement("option");
+
+            //    option.text = Time[i].getAttribute('name');
+
+            //    ddl_howlong.options.add(option);
+
+            //}
+
+        });
+    }
+
+    function txtMe(txt) {
+        var val = $(txt).val();
+        $(txt).attr('value', val);
+    }
+
+    function selectVal(txtid, val) {
+        $("#" + txtid).attr('value', val);
+    }
+
+    function txtAreaMe(txt) {
+        var val = $(txt).val();
+        $(txt).text(val);
+    }
+
+    function checkMe(chk) {
+
+        if ($(chk).prop("checked")) {
+            if ($(chk).attr("type") === "radio")
+                $("[name=" + $(chk).attr("name") + "]").removeAttr('checked');
+            $(chk).attr('checked', 'checked');
+        }
+        else {
+            $(chk).removeAttr('checked');
+        }
+
+    }
+
+    $(document).ready(function () {
+        $("input[name=seendoctor]").click(function (e) {
+            if ($("input[name=seendoctor]:checked").val() === "yes") {
+                $("#txt_docname").removeAttr("disabled");
+                // do your removeClass
+            } else {
+                $("#txt_docname").attr("disabled", "disbled");
+                // do your addClass
+            }
+        });
+
+        $("input[name=injpast]").click(function (e) {
+            if ($("input[name=injpast]:checked").val() === "yes") {
+                $("#txt_injur_past_bp").removeAttr("disabled");
+                $("#txt_injur_past_how").removeAttr("disabled");
+                // do your removeClass
+            } else {
+                $("#txt_injur_past_bp").attr("disabled", "disbled");
+                $("#txt_injur_past_how").attr("disabled", "disbled");
+                // do your addClass
+            }
+        });
+
+        $("input[name=wanttohosp]").click(function (e) {
+
+
+
+            if ($("input[name=wanttohosp]:checked").val() === "yes") {
+                $("#txt_day").removeAttr("disabled");
+
+            } else {
+                $("#txt_day").attr("disabled", "disbled");
+
+            }
+        });
+
+        $("input[name=hos]").click(function (e) {
+            if ($("input[name=hos]:checked").val() === "yes") {
+                $("#txt_hospital").removeAttr("disabled");
+                //$("#txt_mri").removeAttr("disabled");
+                //$("#txt_CT").removeAttr("disabled");
+                //$("#txt_x_ray").removeAttr("disabled");
+                $("#txt_prescription").removeAttr("disabled");
+                $("#txtmrictxray").removeAttr("disabled");
+
+            } else {
+                $("#txt_hospital").attr("disabled", "disbled");
+                //$("#txt_mri").attr("disabled", "disbled");
+                //$("#txt_CT").attr("disabled", "disbled");
+                //$("#txt_x_ray").attr("disabled", "disbled");
+                $("#txt_prescription").attr("disabled", "disbled");
+                $("#txtmrictxray").attr("disabled", "disbled");
+
+            }
+        });
+
+    });
+
+
+
+</script>
