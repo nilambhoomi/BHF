@@ -101,7 +101,10 @@ public partial class PatientIntakeList : System.Web.UI.Page
                 cmd.Parameters.AddWithValue("@SDate", txtFromDate.Text);
             }
 
-
+            if (!string.IsNullOrEmpty(txtDOB.Text))
+            {
+                cmd.Parameters.AddWithValue("@DOB", txtDOB.Text);
+            }
 
             //cmd.Parameters.AddWithValue("@PageIndex", pageIndex - 1);
             //cmd.Parameters.AddWithValue("@PageSize", pagesize);
@@ -1245,7 +1248,7 @@ public partial class PatientIntakeList : System.Web.UI.Page
         string name = ds.Tables[0].Rows[0]["FirstName"].ToString() + " " + ds.Tables[0].Rows[0]["MiddleName"].ToString() + " " + ds.Tables[0].Rows[0]["LastName"].ToString();
         string doa = CommonConvert.DateFormat(ds.Tables[0].Rows[0]["DOA"].ToString());
         string doe = CommonConvert.DateFormat(ds.Tables[0].Rows[0]["DOE"].ToString());
-                string handness = ds.Tables[0].Rows[0]["handedness"].ToString().ToLower();
+        string handness = ds.Tables[0].Rows[0]["handedness"].ToString().ToLower();
         string compensation = ds.Tables[0].Rows[0]["compensation"].ToString().ToLower();
         str = str.Replace("#patientname", name);
         name = ds.Tables[0].Rows[0]["Sex"].ToString().TrimEnd('.') + " " + name;
@@ -1268,7 +1271,7 @@ public partial class PatientIntakeList : System.Web.UI.Page
 
         string age = ds.Tables[0].Rows[0]["AGE"].ToString();
 
-        string printpage1str = printPage1(lnk.CommandArgument, age, doa, ds.Tables[0].Rows[0]["Location_Id"].ToString(), compensation,handness);
+        string printpage1str = printPage1(lnk.CommandArgument, age, doa, ds.Tables[0].Rows[0]["Location_Id"].ToString(), compensation, handness);
 
 
         printpage1str = printpage1str.Replace("#gender", gender);
@@ -2109,13 +2112,13 @@ public partial class PatientIntakeList : System.Web.UI.Page
             strExceptions = "";
             strtitle = "";
 
-if (page3_1.ContainsKey("txtMST"))
+            if (page3_1.ContainsKey("txtMST"))
             {
-            if (!string.IsNullOrEmpty(page3_1["txtMST"]))
-            {
-                strtitle = page3_1["txtMST"].ToString();
+                if (!string.IsNullOrEmpty(page3_1["txtMST"]))
+                {
+                    strtitle = page3_1["txtMST"].ToString();
+                }
             }
-        }
 
             if (page3_1.ContainsKey("LAbduction"))
             {
@@ -4404,7 +4407,7 @@ if (page3_1.ContainsKey("txtMST"))
 
             if (cmp == "mm")
             {
-                str = "On #doe, #name, a "+handness+" #age-year-old #sex #accident_desc.";
+                str = "On #doe, #name, a " + handness + " #age-year-old #sex #accident_desc.";
 
                 if (page1.ContainsKey("txt_accident_desc_1"))
                 {
@@ -4430,7 +4433,7 @@ if (page3_1.ContainsKey("txtMST"))
             }
             else
             {
-                str = "On #doe, #name, a "+handness+" #age-year-old #sex #accident_desc which occurred on #doa. ";
+                str = "On #doe, #name, a " + handness + " #age-year-old #sex #accident_desc which occurred on #doa. ";
 
                 str = str.Replace("#doa", doa);
 
@@ -4925,7 +4928,7 @@ if (page3_1.ContainsKey("txtMST"))
         str = str.Replace("#dos", doe);
         string age = ds.Tables[0].Rows[0]["AGE"].ToString();
         string compensation = ds.Tables[0].Rows[0]["compensation"].ToString().ToLower();
-                string handness = ds.Tables[0].Rows[0]["handedness"].ToString().ToLower();
+        string handness = ds.Tables[0].Rows[0]["handedness"].ToString().ToLower();
 
         ViewState["fname"] = ds.Tables[0].Rows[0]["FirstName"].ToString();
         ViewState["lname"] = ds.Tables[0].Rows[0]["LastName"].ToString();
@@ -4937,7 +4940,7 @@ if (page3_1.ContainsKey("txtMST"))
 
         if (string.IsNullOrEmpty(strOldHistory))
         {
-            string printpage1str = printPage1(PatientIE_ID, age, doa, ds.Tables[0].Rows[0]["Location_Id"].ToString(), compensation,handness);
+            string printpage1str = printPage1(PatientIE_ID, age, doa, ds.Tables[0].Rows[0]["Location_Id"].ToString(), compensation, handness);
 
 
             printpage1str = printpage1str.Replace("#gender", gender);

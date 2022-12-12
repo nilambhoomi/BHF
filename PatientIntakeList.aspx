@@ -268,7 +268,7 @@
             }
     </style>
 
-</asp:Content>
+ </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpTitle" runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cpMain" runat="Server">
@@ -301,6 +301,9 @@
 
                                     </div>
 
+                                    <div class="col-sm-2">
+                                        <asp:TextBox ID="txtDOB" CssClass="dateonly" placeholder="DOB" runat="server"></asp:TextBox>
+                                    </div>
                                     <div class="col-sm-4">
                                         <asp:TextBox ID="txtFromDate" CssClass="dateonly" placeholder="From DOE" runat="server"></asp:TextBox>
                                         &nbsp;
@@ -421,7 +424,7 @@
 
                                                     <asp:HyperLink runat="server" ID="lnkhyper" CssClass="btn btn-link" NavigateUrl='<%# "~/patientdocuments.aspx?PIEID="+Eval("PatientIE_ID") %>'>| Documents</asp:HyperLink>
 
-                                                     <asp:HyperLink runat="server" CssClass="btn btn-link" ID="HyperLink5" NavigateUrl='<%# "~/Appointment.aspx?PID="+Eval("Patient_Id") %>' Text="| Appointment "></asp:HyperLink>
+                                                    <asp:HyperLink runat="server" CssClass="btn btn-link" ID="HyperLink5" NavigateUrl='<%# "~/Appointment.aspx?PID="+Eval("Patient_Id") %>' Text="| Appointment "></asp:HyperLink>
 
 
                                                     <asp:LinkButton runat="server" ID="lnkDelete" Visible="false" OnClientClick="return confirm('Are you sure you want to delete this IE ?')" CssClass="btn btn-link" CommandArgument='<%# Eval("PatientIE_ID").ToString()%>' OnClick="lnkDelete_Click">| Delete</asp:LinkButton>
