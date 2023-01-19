@@ -982,11 +982,11 @@ public class PrintDocumentHelper
                         foreach (string att in attrib)
                         {
                             //Response.Write(att.ToLower()+"<br>");
-                            if (att.ToLower().StartsWith("id"))
+                            if (att.ToLower().StartsWith("id="))
                             {
                                 String[] attele = att.Split('=');
                                 id = attele[1].ToString().Trim('"');
-                                //                                    Response.Write(id + "<br>");
+                                //Response.Write(id + "<br>");
                             }
                         }
                         if (id.Trim() != "")
@@ -998,9 +998,9 @@ public class PrintDocumentHelper
 
             }
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            d.Clear();
+            //d.Clear();
         }
         return d;
         //foreach (string key in d.Keys)

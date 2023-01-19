@@ -4459,35 +4459,6 @@ public partial class PatientIntakeList : System.Web.UI.Page
 
 
 
-                //if (!string.IsNullOrEmpty(strBodypart))
-                //    str = str + " #gender sustained multiple skeletal injuries including injury to " + strBodypart.TrimStart(',') + ". ";
-
-                //if (page1.ContainsKey("txtWeek"))
-                //{
-                //    if (!string.IsNullOrEmpty(page1["txtWeek"]))
-                //        str = str + "The patient has been undergoing PT/chiro for the past " + page1["txtWeek"] + ". ";
-                //}
-
-
-                //string fullname = ds.Tables[0].Rows[0]["Sex"].ToString() + " " + ds.Tables[0].Rows[0]["FirstName"].ToString() + " " + ds.Tables[0].Rows[0]["MiddleName"].ToString() + " " + ds.Tables[0].Rows[0]["LastName"].ToString();
-                //string sex = ds.Tables[0].Rows[0]["Sex"].ToString() == "Mr." ? "male" : "female";
-                //string gender = ds.Tables[0].Rows[0]["Sex"].ToString() == "Mr." ? "He" : "She";
-
-
-                //string location = "";
-                //query = ("select * from tblLocations where Location_ID=" + location_id);
-                //ds = db.selectData(query);
-
-                //if (ds.Tables[0].Rows.Count > 0)
-                //{
-                //    if (ds.Tables[0].Rows[0]["Location"].ToString().ToLower().Contains("office"))
-                //        location = ds.Tables[0].Rows[0]["Location"].ToString();
-                //    else
-                //        location = ds.Tables[0].Rows[0]["Location"].ToString() + " office.";
-                //}
-
-                // str = str + " The patient is seen at " + location.Replace(".", "") + ". ";
-
 
                 if (page1.ContainsKey("txt_belt"))
                 {
@@ -4505,21 +4476,7 @@ public partial class PatientIntakeList : System.Web.UI.Page
                     }
                 }
 
-                //// str = "On " + CommonConvert.DateFormat(ds.Tables[0].Rows[0]["DOE"].ToString()) + ", " + fullname + ", a " + ds.Tables[0].Rows[0]["AGE"].ToString().Trim() + "-year-old " + sex + " " + page1["txt_accident_desc"] + " which occurred on the date of " + CommonConvert.DateFormat(ds.Tables[0].Rows[0]["DOA"].ToString()) + ". The patient was seen at the " + location + " ";
-                //str = "On " + CommonConvert.DateFormat(ds.Tables[0].Rows[0]["DOE"].ToString()) + ", " + fullname + ", a " + ds.Tables[0].Rows[0]["AGE"].ToString().Trim() + "-year-old " + sex + " " + page1["txt_accident_desc"] + " which occurred on the date of " + CommonConvert.DateFormat(ds.Tables[0].Rows[0]["DOA"].ToString()) + ". ";
-
-
-                //if (!string.IsNullOrEmpty(page1["txt_belt"]))
-                //    str = str + "The patient states " + gender.ToLower() + " was the " + page1["txt_belt"] + " of a vehicle which was involved in " + page1["txt_invovledin"] + " collision. ";
-
-                //if (page1.ContainsKey("txt_details"))
-                //{
-                //    if (!string.IsNullOrEmpty(page1["txt_details"]))
-                //        str = str + page1["txt_details"] + " ";
-                //}
-
-                ////if (!string.IsNullOrEmpty(page1["txt_details"]))
-                ////    str = str + page1["txt_details"];
+             
 
                 if (!string.IsNullOrEmpty(page1["txt_EMS"]))
                 {
@@ -4542,12 +4499,7 @@ public partial class PatientIntakeList : System.Web.UI.Page
                     }
                 }
 
-                //if (page1["chk_mri"] == "true" && !string.IsNullOrEmpty(page1["txt_mri"]))
-                //    strtemp = strtemp + ", MRI of the " + page1["txt_mri"].ToLower();
-                //if (page1["chk_CT"] == "true" && !string.IsNullOrEmpty(page1["txt_CT"]))
-                //    strtemp = strtemp + ", CT of the " + page1["txt_CT"].ToLower();
-                //if (page1["chk_xray"] == "true" && !string.IsNullOrEmpty(page1["txt_x_ray"]))
-                //    strtemp = strtemp + ", x-ray of the " + page1["txt_x_ray"].ToLower();
+              
 
                 if (!string.IsNullOrEmpty(page1["txtmrictxray"]))
                 {
@@ -4603,45 +4555,7 @@ public partial class PatientIntakeList : System.Web.UI.Page
                     }
                 }
 
-                //if (page1["chkComplainingofHeadaches"] == "true")
-                //{
-
-                //    str = str + "The patient is complaining of headaches as a result of the accident. ";
-
-                //    if (!string.IsNullOrEmpty(page1["txtPersistent"]))
-                //        str = str + "The headaches started after the accident and are " + page1["txtPersistent"] + ". ";
-                //}
-
-                //if (page1["chkHeadechesAssociated"] == "true")
-                //{
-                //    str = str + " The headaches are associated with nausea and dizziness. ";
-                //}
-
-                //string strOp = "";
-
-                //if (page1["chkfrontal"] == "true")
-                //    strOp = "frontal";
-
-                //if (page1["chkLeftParietal"] == "true")
-                //    strOp = strOp + ", left parietal";
-
-                //if (page1["chkRightParietal"] == "true")
-                //    strOp = strOp + ", right parietal";
-
-                //if (page1["chkLeftTemporal"] == "true")
-                //    strOp = strOp + ", left temporal";
-
-                //if (page1["chkRightTemporal"] == "true")
-                //    strOp = strOp + ", right temporal";
-
-                //if (page1["chkOccipital"] == "true")
-                //    strOp = strOp + ", occipital";
-
-                //if (page1["chkGlobal"] == "true")
-                //    strOp = strOp + ", global";
-
-                //if (!string.IsNullOrEmpty(strOp))
-                //    str = str + " The headaches are " + strOp.TrimStart(',') + ". ";
+            
 
 
                 long idId = Convert.ToInt64(patientIE_ID);
@@ -4669,107 +4583,6 @@ public partial class PatientIntakeList : System.Web.UI.Page
                 }
 
             }
-
-
-            //query = ("select * from tblInjuredBodyParts where PatientIE_ID= " + patientIE_ID + "");
-            //ds = db.selectData(query);
-
-            //if (ds != null && ds.Tables[0].Rows.Count > 0)
-            //{
-
-            //    //str = str + "#accidentdetails ";
-            //    // str = str + "#accidentdetails During the accident, the patient reports injuries to ";
-            //    string strPresent = "The patient presents for an orthopedic evaluation of ";
-
-            //    str = str + "My evaluation is limited to ";
-
-            //    string strbodypart = "";
-
-            //    if (ds.Tables[0].Rows[0]["Neck"].ToString() == "True")
-            //        strbodypart = "neck";
-
-            //    if (ds.Tables[0].Rows[0]["MidBack"].ToString() == "True")
-            //        strbodypart = strbodypart + ", midback";
-
-            //    if (ds.Tables[0].Rows[0]["LowBack"].ToString() == "True")
-            //        strbodypart = strbodypart + ", lowback";
-
-            //    if (ds.Tables[0].Rows[0]["LeftShoulder"].ToString() == "True" && ds.Tables[0].Rows[0]["RightShoulder"].ToString() == "True")
-            //        strbodypart = strbodypart + ", bilateral shoulders";
-            //    else
-            //    {
-            //        if (ds.Tables[0].Rows[0]["LeftShoulder"].ToString() == "True")
-            //            strbodypart = strbodypart + ", left shoulder";
-            //        else if (ds.Tables[0].Rows[0]["RightShoulder"].ToString() == "True")
-            //            strbodypart = strbodypart + ", right shoulder";
-            //    }
-
-            //    if (ds.Tables[0].Rows[0]["LeftKnee"].ToString() == "True" && ds.Tables[0].Rows[0]["RightKnee"].ToString() == "True")
-            //        strbodypart = strbodypart + ", bilateral knees";
-            //    else
-            //    {
-            //        if (ds.Tables[0].Rows[0]["LeftKnee"].ToString() == "True")
-            //            strbodypart = strbodypart + ", left knee";
-            //        else if (ds.Tables[0].Rows[0]["RightKnee"].ToString() == "True")
-            //            strbodypart = strbodypart + ", right knee";
-            //    }
-
-            //    if (ds.Tables[0].Rows[0]["LeftElbow"].ToString() == "True" && ds.Tables[0].Rows[0]["RightElbow"].ToString() == "True")
-            //        strbodypart = strbodypart + ", bilateral elbows";
-            //    else
-            //    {
-            //        if (ds.Tables[0].Rows[0]["LeftElbow"].ToString() == "True")
-            //            strbodypart = strbodypart + ", left elbow";
-            //        else if (ds.Tables[0].Rows[0]["RightElbow"].ToString() == "True")
-            //            strbodypart = strbodypart + ", right elbow";
-            //    }
-
-            //    if (ds.Tables[0].Rows[0]["LeftWrist"].ToString() == "True" && ds.Tables[0].Rows[0]["RightWrist"].ToString() == "True")
-            //        strbodypart = strbodypart + ", bilateral wrists";
-            //    else
-            //    {
-            //        if (ds.Tables[0].Rows[0]["LeftWrist"].ToString() == "True")
-            //            strbodypart = strbodypart + ", left wrist";
-            //        else if (ds.Tables[0].Rows[0]["RightWrist"].ToString() == "True")
-            //            strbodypart = strbodypart + ", right wrist";
-            //    }
-
-            //    if (ds.Tables[0].Rows[0]["LeftHip"].ToString() == "True" && ds.Tables[0].Rows[0]["RightHip"].ToString() == "True")
-            //        strbodypart = strbodypart + ", bilateral hips";
-            //    else
-            //    {
-            //        if (ds.Tables[0].Rows[0]["LeftHip"].ToString() == "True")
-            //            strbodypart = strbodypart + ", left hip";
-            //        else if (ds.Tables[0].Rows[0]["RightHip"].ToString() == "True")
-            //            strbodypart = strbodypart + ", right hip";
-            //    }
-
-            //    if (ds.Tables[0].Rows[0]["LeftAnkle"].ToString() == "True" && ds.Tables[0].Rows[0]["RightAnkle"].ToString() == "True")
-            //        strbodypart = strbodypart + ", bilateral ankles";
-            //    else
-            //    {
-            //        if (ds.Tables[0].Rows[0]["LeftAnkle"].ToString() == "True")
-            //            strbodypart = strbodypart + ", left ankle";
-            //        else if (ds.Tables[0].Rows[0]["RightAnkle"].ToString() == "True")
-            //            strbodypart = strbodypart + ", right ankle";
-            //    }
-
-            //    StringBuilder sb = new StringBuilder(strbodypart.TrimStart(','));
-            //    if (sb.ToString().LastIndexOf(",") >= 0)
-            //        sb.Replace(",", " and ", sb.ToString().LastIndexOf(","), 1);
-
-            //    ViewState["generalText"] = "If the given history is correct, the injury to the " + sb.ToString() + " is related to the accident of ";
-
-            //    str = str + sb.ToString() + ".";
-            //    strPresent = strPresent + sb.ToString() + ".";
-            //    ViewState["present"] = strPresent;
-
-            //    if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Others"].ToString()))
-            //    {
-            //        if (ds.Tables[0].Rows[0]["Others"].ToString() != ",")
-            //            str = str + " " + ds.Tables[0].Rows[0]["Others"].ToString().TrimEnd('.') + ".";
-            //    }
-            //}
 
 
 

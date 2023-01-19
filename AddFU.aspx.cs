@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -81,11 +82,14 @@ public partial class AddFU : System.Web.UI.Page
                 {
                     master.bindData("", Session["PatientIE_Id2"].ToString());
                     bindPatientDetails(PatientIE_Id);
+                    string txtFU = getHistory(PatientIE_Id.ToString());
+                    txtNote.Text = txtFU;
                 }
                 else
                 {
                     master.bindData(hfPatientFUId.Value, "");
                     bindPatientDetails(PatientIE_Id, Convert.ToInt32(hfPatientFUId.Value), false);
+                  
                 }
 
 
@@ -137,9 +141,10 @@ public partial class AddFU : System.Web.UI.Page
             {
                 txtMAProviders.Text = Convert.ToString(Session["Providers"]);
             }
-
+           
         }
         //PatientIntime.Text = DateTime.Now.ToString();
+
     }
 
     protected void bindLocations()
@@ -2880,5 +2885,383 @@ public partial class AddFU : System.Web.UI.Page
         Html = Html.Insert(rightstart, template);
         return Html;
 
+    }
+
+
+    public string printPage1(string patientIE_ID, string age = "", string doa = "", string location_id = "", string cmp = "nf", string handness = "")
+    {
+
+        SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["connString_V3"].ConnectionString);
+        DBHelperClass db = new DBHelperClass();
+
+
+
+        //page 1 printing string
+        string query = ("select accidentHTML,historyHTML,historyHTMLValue,accident_1_HTML,degreeHTML from tblPage1HTMLContent where PatientIE_ID= " + patientIE_ID + "");
+        SqlCommand cm = new SqlCommand(query, cn);
+        SqlDataAdapter da = new SqlDataAdapter(cm);
+        cn.Open();
+        DataSet ds = new DataSet();
+        da.Fill(ds);
+
+        string str = "";
+        Dictionary<string, string> page1 = new PrintDocumentHelper().getPage1String(ds.Tables[0].Rows[0]["accidentHTML"].ToString());
+        // string page1 = new PrintDocumentHelper().getDocumentString(ds.Tables[0].Rows[0]["historyHTML"].ToString());
+
+
+
+        if (ds != null && ds.Tables[0].Rows.Count > 0)
+        {
+            // str = "The patient is a #age-year-old male who was the #restrained of a vehicle that was involved in a #involve collision on #doa. ";
+
+            if (cmp == "mm")
+            {
+                str = "On #doe, #name, a " + handness + " #age-year-old #sex #accident_desc.";
+
+                if (page1.ContainsKey("txt_accident_desc_1"))
+                {
+                    if (!string.IsNullOrEmpty(page1["txt_accident_desc_1"]))
+                    {
+                        str = str.Replace("#accident_desc", page1["txt_accident_desc_1"].ToString());
+                    }
+                    else if (page1.ContainsKey("txt_accident_desc"))
+                    {
+                        if (!string.IsNullOrEmpty(page1["txt_accident_desc"]))
+                        {
+                            str = str.Replace("#accident_desc", page1["txt_accident_desc"].ToString());
+                        }
+                    }
+                    else
+                    {
+                        str = str.Replace("#accident_desc", "");
+                    }
+                }
+
+
+
+            }
+            else
+            {
+                str = "On #doe, #name, a " + handness + " #age-year-old #sex #accident_desc which occurred on #doa. ";
+
+                str = str.Replace("#doa", doa);
+
+
+
+                if (!string.IsNullOrEmpty(page1["txt_belt"]))
+                {
+                    str = str.Replace("#restrained", page1["txt_belt"].ToString());
+                }
+
+                if (!string.IsNullOrEmpty(page1["txt_invovledin"]))
+                {
+                    str = str.Replace("#involve", page1["txt_invovledin"].ToString());
+                }
+
+                if (page1.ContainsKey("txt_accident_desc_1"))
+                {
+                    if (!string.IsNullOrEmpty(page1["txt_accident_desc_1"]))
+                    {
+                        str = str + page1["txt_accident_desc_1"].TrimEnd('.') + ". ";
+                    }
+                }
+
+
+
+
+                if (page1.ContainsKey("txt_belt"))
+                {
+                    if (!string.IsNullOrEmpty(page1["txt_belt"]))
+                    {
+                        str = str + " The patient states #lgender was the " + page1["txt_belt"].ToString() + " of a vehicle which was involved in a ";
+                    }
+                }
+
+                if (page1.ContainsKey("txt_invovledin"))
+                {
+                    if (!string.IsNullOrEmpty(page1["txt_invovledin"]))
+                    {
+                        str = str + page1["txt_invovledin"] + " collision. ";
+                    }
+                }
+
+
+
+                if (!string.IsNullOrEmpty(page1["txt_EMS"]))
+                {
+                    str = str + "The patient states that an EMS team " + page1["txt_EMS"].ToLower() + ". ";
+                }
+
+                if (page1["rdbhospyes"] == "true")
+                {
+                    str = str + "#gender went to " + page1["txt_hospital"].Replace("hospital", "").Replace("Hospital", "").Replace("HOSPITAL", "") + " Hospital";
+
+                    str = str + " " + page1["txt_via"].ToLower();
+
+                    if (page1["rdbwhospno"] == "true")
+                    {
+                        str = str + " on the same day the accident occurred. ";
+                    }
+                    else
+                    {
+                        str = str + (page1["txt_day"] == "1" ? " 1 day" : page1["txt_day"] + " days") + " after the accident occurred.";
+                    }
+                }
+
+
+
+                if (!string.IsNullOrEmpty(page1["txtmrictxray"]))
+                {
+                    str = str + " At the hospital, the patient had " + page1["txtmrictxray"].TrimEnd('.') + ". ";
+                }
+
+                if (!string.IsNullOrEmpty(page1["txt_prescription"]))
+                {
+                    str = str + "At the hospital prescription was given for " + page1["txt_prescription"].TrimEnd('.').ToLower() + ". ";
+                }
+
+                Dictionary<string, string> page1_1 = new PrintDocumentHelper().getPage1String(ds.Tables[0].Rows[0]["accident_1_HTML"].ToString());
+
+
+                string _loc = "";
+
+                if (page1_1["chk_headinjury"] == "true")
+                {
+                    _loc = "The patient reports injury to the head and";
+                    if (page1_1["chk_loc"] != "true")
+                    {
+                        _loc = _loc + " no loss of consciousness.";
+                    }
+                }
+
+                if (page1_1["chk_loc"] == "true")
+                {
+                    if (!string.IsNullOrEmpty(_loc))
+                    {
+                        _loc = _loc + " loss of consciousness for " + page1_1["txt_howlong"] + " " + page1_1["txthowlong"] + ". ";
+                    }
+                    else
+                    {
+                        _loc = "Loss of consciousness for " + page1_1["txt_howlong"] + " " + page1_1["txthowlong"] + ". ";
+                    }
+                }
+
+                str = str + _loc;
+
+
+                if (page1_1["rdbdocyes"] == "true")
+                {
+                    str = str + "The patient visited " + page1_1["txt_docname"].ToString().TrimEnd('.') + " since the incident. ";
+                }
+
+                if (page1_1["rdbinjuyes"] == "true")
+                {
+                    str = str + "#gender had an injury to " + page1_1["txt_injur_past_bp"].TrimEnd('.') + ".";
+
+                    if (!string.IsNullOrEmpty(page1_1["txt_injur_past_how"]))
+                    {
+                        str = str.TrimEnd('.') + " because of a " + page1_1["txt_injur_past_how"].TrimEnd('.') + ". ";
+                    }
+                }
+
+
+
+
+                long idId = Convert.ToInt64(patientIE_ID);
+                StringBuilder strBodypart = new StringBuilder().Append(getBodyParts(idId));
+
+                if (strBodypart.ToString().LastIndexOf(",") >= 0)
+                {
+                    strBodypart = strBodypart.Replace(",", " and ", strBodypart.ToString().LastIndexOf(","), 1);
+                    ViewState["bodypart"] = strBodypart;
+                }
+                else
+                {
+                    ViewState["bodypart"] = strBodypart.ToString();
+                }
+
+
+                str = str.Trim() + " During the accident, the patient reports injuries to " + strBodypart.ToString() + ". ";
+
+                if (page1_1.ContainsKey("txt_accident_desc_3"))
+                {
+                    if (!string.IsNullOrEmpty(page1_1["txt_accident_desc_3"]))
+                    {
+                        str = str + page1_1["txt_accident_desc_3"].TrimEnd('.') + ". ";
+                    }
+                }
+
+            }
+
+
+
+            if (page1.ContainsKey("txt_accident_desc"))
+            {
+                if (!string.IsNullOrEmpty(page1["txt_accident_desc"]))
+                {
+                    str = str.Replace("#accident_desc", page1["txt_accident_desc"].ToString());
+                }
+                else
+                {
+                    str = str.Replace("#accident_desc", "");
+                }
+            }
+            else
+            {
+                str = str.Replace("#accident_desc", "");
+            }
+        }
+
+
+        str = str.Replace("#age", age);
+
+        return str;
+    }
+
+
+    private string getBodyParts(long patientIEID)
+    {
+
+        List<string> _injured = new BusinessLogic().getInjuredParts(patientIEID).Distinct<string>().ToList<string>();
+        string str = "";
+
+        if (_injured.Contains("Neck"))
+        {
+            str = str + ", neck";
+        }
+
+        if (_injured.Contains("MidBack"))
+        {
+            str = str + ", midback";
+        }
+
+        if (_injured.Contains("LowBack"))
+        {
+            str = str + ", low back";
+        }
+
+        if (_injured.Contains("RightShoulder"))
+        {
+            str = str + ", right shoulder";
+        }
+
+        if (_injured.Contains("LeftShoulder"))
+        {
+            str = str + ", left shoulder";
+        }
+
+        if (_injured.Contains("RightKnee"))
+        {
+            str = str + ", right knee";
+        }
+
+        if (_injured.Contains("LeftKnee"))
+        {
+            str = str + ", left knee";
+        }
+
+        if (_injured.Contains("RightElbow"))
+        {
+            str = str + ", right elbow";
+        }
+
+        if (_injured.Contains("LeftElbow"))
+        {
+            str = str + ", left elbow";
+        }
+
+        if (_injured.Contains("RightWrist"))
+        {
+            str = str + ", right wrist";
+        }
+
+        if (_injured.Contains("LeftWrist"))
+        {
+            str = str + ", left wrist";
+        }
+
+        if (_injured.Contains("RightHip"))
+        {
+            str = str + ", right hip";
+        }
+
+        if (_injured.Contains("LeftHip"))
+        {
+            str = str + ", left hip";
+        }
+
+        if (_injured.Contains("RightAnkle"))
+        {
+            str = str + ", right ankle";
+        }
+
+        if (_injured.Contains("LeftAnkle"))
+        {
+            str = str + ", left ankle";
+        }
+
+        return str.TrimStart(',');
+    }
+
+
+    private string getHistory(string PEID)
+    {
+        //page1 printing
+        string query = ("select * from View_PatientIE where PatientIE_ID= " + PEID);
+        DataSet ds = db.selectData(query);
+
+
+       
+        string gender = ds.Tables[0].Rows[0]["Sex"].ToString() == "Mr." ? "He" : "She";
+        string sex = ds.Tables[0].Rows[0]["Sex"].ToString() == "Mr." ? "male" : "female";
+        string name = ds.Tables[0].Rows[0]["FirstName"].ToString() + " " + ds.Tables[0].Rows[0]["MiddleName"].ToString() + " " + ds.Tables[0].Rows[0]["LastName"].ToString();
+        string doa = CommonConvert.DateFormat(ds.Tables[0].Rows[0]["DOA"].ToString());
+        string doe = CommonConvert.DateFormat(ds.Tables[0].Rows[0]["DOE"].ToString());
+        string handness = ds.Tables[0].Rows[0]["handedness"].ToString().ToLower();
+        string compensation = ds.Tables[0].Rows[0]["compensation"].ToString().ToLower();
+     
+        name = ds.Tables[0].Rows[0]["Sex"].ToString().TrimEnd('.') + " " + name;
+       
+        string age = ds.Tables[0].Rows[0]["AGE"].ToString();
+
+        string printpage1str = printPage1(PEID, age, doa, ds.Tables[0].Rows[0]["Location_Id"].ToString(), compensation, handness);
+
+
+        printpage1str = printpage1str.Replace("#gender", gender);
+        printpage1str = printpage1str.Replace("#lgender", gender.ToLower());
+        printpage1str = printpage1str.Replace("#sex", sex);
+        printpage1str = printpage1str.Replace("#doe", doe);
+        printpage1str = printpage1str.Replace("#name", name);
+
+        return formatString(printpage1str);
+    }
+
+
+    public string formatString(string str)
+    {
+        string _str = str.Replace(System.Environment.NewLine, string.Empty);
+        _str = System.Text.RegularExpressions.Regex.Replace(_str, @"\s+", " ");
+        _str = _str.Replace(" ,", ",");
+        _str = _str.Replace(". ;", ";");
+        _str = _str.Replace(" to.", ".");
+
+        _str = _str.Replace(" /", "/");
+        _str = _str.Replace(". . .", ".");
+        _str = _str.Replace(".  .", ".");
+        _str = _str.Replace(". .", ".");
+
+
+        _str = _str.Replace(", .", ".");
+        _str = _str.Replace(",.", ".");
+        _str = _str.Replace(",  .", ".");
+        _str = _str.Replace("..", ".");
+
+        _str = _str.Replace(" and .", ".");
+        _str = _str.Replace(", and", "and");
+        _str = _str.Replace(" and  .", ".");
+        _str = _str.Replace(" .", ".");
+
+
+        return _str;
     }
 }
